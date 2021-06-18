@@ -1,4 +1,4 @@
-/* Copyright 2019 Thomas Baart <thomas@splitkb.com>
+/* Copyright 2021 Leon Anavi <leon@anavi.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -13,19 +13,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#pragma once
 
-#include "quantum.h"
+#include QMK_KEYBOARD_H
 
-#if defined(KEYBOARD_kyria_rev1)
-#    include "rev1.h"
-#endif
+const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+  [0] = LAYOUT(
+    KC_0,  KC_1
+  )
+};
 
-/* This a shortcut to help you visually see your layout.
- *
- * The first section contains all of the arguments representing the physical
- * layout of the board and position of the keys.
- *
- * The second converts the arguments into a two-dimensional array which
- * represents the switch matrix.
- */
+const uint16_t PROGMEM test_combo[] = {KC_0, KC_1, COMBO_END};
+combo_t key_combos[COMBO_COUNT] = {COMBO_ACTION(test_combo)};
+
+void process_combo_event(uint16_t combo_index, bool pressed) {
+	backlight_step();
+}
