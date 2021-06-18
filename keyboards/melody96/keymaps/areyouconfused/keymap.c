@@ -4,9 +4,9 @@
 
 enum layers {
 	_QWERTY,
-	_RAISE,
-	_LOWER,
-	_ADJUST
+	_FN,
+	_SMACRO,
+	_TOGG
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -22,25 +22,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	 //----shift---|-----z-----|----x----|----c-----|---v----|----b----|----n-----|----m----|----,-----|-----.----|-----/------|-----shift------|------up----|----1----|----2----|----3----|
 	    	KC_LSFT, 		KC_Z, 	KC_X, 	KC_C, 	KC_V, 	KC_B, 	KC_N, 	KC_M, 	KC_COMM, 	 KC_DOT, 	  KC_SLSH, 	 KC_RSFT, 		 KC_UP, 	KC_P1, 	KC_P2, 	KC_P3, 
 	 //---ctrl---|---gui----|----alt-----|----------------------space------------------|-------alt----|------fn----|------ctrl------------|------left---|--down--|---right--|----0----|----.----|---enter---
-	    	KC_LCTL, 	KC_LGUI, 	KC_LALT, 							KC_SPC, 				KC_RALT, 	MO(_RAISE), 	LT(_LOWER, KC_RCTL), 	KC_LEFT, 	KC_DOWN, 	KC_RGHT, 	KC_P0, 	KC_PDOT, 	KC_PENT),
+	    	KC_LCTL, 	KC_LGUI, 	KC_LALT, 							KC_SPC, 				KC_RALT, 	MO(_FN), 	LT(_SMACRO, KC_RCTL), 	KC_LEFT, 	KC_DOWN, 	KC_RGHT, 	KC_P0, 	KC_PDOT, 	KC_PENT),
 	 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-     [_RAISE] = LAYOUT_hotswap(	
+     [_FN] = LAYOUT_hotswap(	
 	 //---ESC---|----F1---|---F2----|----F3---|----F4---|----F5---|----F6---|----F7---|----F8---|----F9---|---F10---|----F11---|---F12---|---HOME--|---END---|---PGUP--|---PGDN--|---PRT---|----DEl---
 		KC_TRNS, KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS,
 	 //--grave--|----1----|----2----|----3----|----4----|----5----|----6----|----7----|----7----|----9----|----0----|----sub---|----=----|--------back-------|----NL---|---div---|---mult--|----sub---
 	 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 		KC_DEL, 		KC_NLCK, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 
 	 //----tab---|----q---|----w----|----e----|----r----|----t----|----y----|----u----|----i----|----o----|----p----|-----[-----|------]-----|-------\-------|----7----|----8----|----9----|
-		KC_TRNS,	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 		KC_APP, 		KC_TRNS, 	KC_TRNS, 	KC_TRNS,
+		KC_TRNS,	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_UP, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 		KC_APP, 		KC_TRNS, 	KC_TRNS, 	KC_TRNS,
 	 //----caps---|---A----|---s----|----d----|----f----|----g----|----h----|----j----|----k----|----l----|----;----|-----'-----|---------enter--------------|----4----|----5----|----6----|----+-----
-		KC_TRNS,   KC_TRNS,	 BL_DEC,  BL_INC, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_MPRV, 	KC_MPLY, 	KC_MNXT,       	KC_TRNS,			KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS,
+		KC_TRNS,   KC_TRNS,	 BL_DEC,  BL_INC, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_LEFT, 	KC_DOWN, 	KC_RIGHT, 	KC_MPRV, 	KC_MNXT,       	KC_TRNS,			KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS,
 	 //----shift---|-----z-----|----x----|----c-----|---v----|----b----|----n-----|----m----|----,-----|-----.----|-----/------|-----shift------|------up----|----1----|----2----|----3----|
-		KC_TRNS,	  RGB_HUI,    RGB_SAI,	RGB_VAI, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_MUTE, 	KC_VOLD, 	KC_VOLU, 	      KC_TRNS, 	     KC_TRNS, 	KC_TRNS,	KC_TRNS, 	KC_TRNS,
+		KC_TRNS,	  RGB_HUI,    RGB_SAI,	RGB_VAI, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_MUTE, 	KC_VOLD, 	KC_VOLU, 	      KC_MPLY, 	     KC_TRNS, 	KC_TRNS,	KC_TRNS, 	KC_TRNS,
 	 //---ctrl---|---gui----|----alt-----|----------------------space------------------|-------alt----|------fn----|------ctrl------------|---left---|---down---|---right--|----0----|----.----|---enter---
-		KC_TRNS, 	KC_TRNS, 	KC_TRNS, 					KC_TRNS, 						KC_TRNS, 		KC_TRNS, 	OSL(_ADJUST), 		 KC_TRNS,    KC_TRNS,   KC_TRNS, 	KC_TRNS, 	KC_TRNS, KC_TRNS),
+		KC_TRNS, 	KC_TRNS, 	KC_TRNS, 					KC_TRNS, 						KC_TRNS, 		KC_TRNS, 	OSL(_TOGG), 		 KC_TRNS,    KC_TRNS,   KC_TRNS, 	KC_TRNS, 	KC_TRNS, KC_TRNS),
 	 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-	[_LOWER] = LAYOUT_hotswap(	// software macro layout keys are keys + hyper
+	[_SMACRO] = LAYOUT_hotswap(	// software macro layout keys are keys + hyper
 	 //---ESC---|----F1---|---F2----|----F3---|----F4---|----F5---|----F6---|----F7---|----F8---|----F9---|---F10---|----F11---|---F12---|---HOME--|---END---|---PGUP--|---PGDN--|---PRT---|----DEl---
 		KC_TRNS, HYPR(KC_F1), HYPR(KC_F2), HYPR(KC_F3), HYPR(KC_F4), HYPR(KC_F5), HYPR(KC_F6), HYPR(KC_F7), HYPR(KC_F8), HYPR(KC_F9), HYPR(KC_F10), HYPR(KC_F11), HYPR(KC_F12), HYPR(KC_HOME), HYPR(KC_END), HYPR(KC_PGUP), HYPR(KC_PGDN), HYPR(KC_PSCR), HYPR(KC_DEL),
 	 //--grave--|----1----|----2----|----3----|----4----|----5----|----6----|----7----|----7----|----9----|----0----|----sub---|----=----|--------back-------|----NL---|---div---|---mult--|----sub---
@@ -55,7 +55,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		HYPR(KC_F14), HYPR(KC_F15), HYPR(KC_F16), 					HYPR(KC_SPC), 				HYPR(KC_F17), KC_TRNS, KC_TRNS, 				 HYPR(KC_LEFT), HYPR(KC_DOWN), HYPR(KC_RGHT), HYPR(KC_P0), HYPR(KC_PDOT), HYPR(KC_PENT)),
 	 //----------------------------------|------------------------------------------------------|----------|--------|-------------------|----------|---------|---------|---------|---------|----------
 
-	[_ADJUST] = LAYOUT_hotswap(
+	[_TOGG] = LAYOUT_hotswap(
 	 //---ESC---|----F1---|---F2----|----F3---|----F4---|----F5---|----F6---|----F7---|----F8---|----F9---|---F10---|----F11---|---F12---|---HOME--|---END---|---PGUP--|---PGDN--|---PRT---|----DEl---
 		RESET, 	RGB_TOG,	pHSV,     BL_TOGG,	BL_BRTG, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS,
 	 //--grave--|----1----|----2----|----3----|----4----|----5----|----6----|----7----|----7----|----9----|----0----|----sub---|----=----|--------back-------|----NL---|---div---|---mult--|----sub---
@@ -67,6 +67,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	 //----shift---|-----z-----|----x----|----c-----|---v----|----b-----|----n-----|----m----|----,-----|-----.----|-----/------|-----shift------|------up----|----1----|----2----|----3----|
 		KC_TRNS, 	    KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS, 	KC_TRNS, 	KC_TRNS,   KC_TRNS,  KC_TRNS,   KC_TRNS,   KC_TRNS,      KC_TRNS,  		KC_TRNS,	KC_TRNS, 	KC_TRNS, 	KC_TRNS,
 	 //---ctrl---|---gui----|----alt-----|----------------------space------------------|-------alt----|------fn----|------ctrl------------|------left---|--down--|---right--|----0----|----.----|---enter---
-		KC_TRNS, 	KC_TRNS, 	KC_TRNS,							KC_TRNS, 				KC_TRNS, 	KC_TRNS, 	     TG(_ADJUST), 	   KC_TRNS,  KC_TRNS, 	KC_TRNS, 	KC_TRNS,	KC_TRNS, KC_TRNS)
+		KC_TRNS, 	KC_TRNS, 	KC_TRNS,							KC_TRNS, 				KC_TRNS, 	KC_TRNS, 	     TG(_TOGG), 	   KC_TRNS,  KC_TRNS, 	KC_TRNS, 	KC_TRNS,	KC_TRNS, KC_TRNS)
 	 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 };
