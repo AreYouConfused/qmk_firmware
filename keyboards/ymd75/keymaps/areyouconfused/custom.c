@@ -79,7 +79,7 @@ void keyboard_post_init_user(void) {
 static bool lastCaps = 0;
 bool led_update_user(led_t led_state) {
     if (led_state.caps_lock && !lastCaps){
-        rgblight_blink_layer_repeat(BLNK, 175, 2);
+        // rgblight_blink_layer_repeat(BLNK, 175, 2);
         lastCaps = 1;
     } else {
         lastCaps = led_state.caps_lock;
