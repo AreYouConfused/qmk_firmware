@@ -23,7 +23,7 @@
 #define LAYER_LED 11
 #define LAYER_LED_COUNT 2
 
-enum RGB_LAYERS { FN1, FN2, FN3, CAPS, BLNK, RGB_NO, RGB_YES };
+enum RGB_LAYERS { FN1, FN2, FN3, NUM, CAPS, BLNK, RGB_NO, RGB_YES };
 
 const rgblight_segment_t PROGMEM my_capslock_layer[] = RGBLIGHT_LAYER_SEGMENTS(
     {0, 1, HSV_GREEN},
@@ -43,6 +43,10 @@ const rgblight_segment_t PROGMEM fn3_layer[] = RGBLIGHT_LAYER_SEGMENTS(
     {LAYER_LED, LAYER_LED_COUNT, HSV_cORANGE}
 );
 
+const rgblight_segment_t PROGMEM num_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {10, 1, HSV_MAGENTA}
+);
+
 const rgblight_segment_t PROGMEM blank[] = RGBLIGHT_LAYER_SEGMENTS(
     {0, 18, HSV_BLACK}
 );
@@ -59,6 +63,7 @@ const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
     fn1_layer,
     fn2_layer,
     fn3_layer,
+    num_layer,
     my_capslock_layer,
     blank,
     rgb_no,
@@ -84,9 +89,11 @@ bool led_update_user(led_t led_state) {
 }
 
 layer_state_t layer_state_set_user(layer_state_t state) {
-    rgblight_set_layer_state(FN1, layer_state_cmp(state, 1));
-    rgblight_set_layer_state(FN2, layer_state_cmp(state, 2));
-    rgblight_set_layer_state(FN3, layer_state_cmp(state, 3));
+    rgblight_set_layer_state(FN1, layer_state_cmp(state, _FN));
+    rgblight_set_layer_state(FN2, layer_state_cmp(state, _SMACRO));
+    rgblight_set_layer_state(FN3, layer_state_cmp(state, _TOGG));
+    rgblight_set_layer_state(NUM, layer_state_cmp(state, _NUM));
+
     return state;
 }
 
