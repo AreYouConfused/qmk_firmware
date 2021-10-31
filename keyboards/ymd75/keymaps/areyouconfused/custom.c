@@ -17,7 +17,7 @@
 #include QMK_KEYBOARD_H
 #include "my_keycodes.h"
 
-#define RGB_BASE_COLOR 128, 255, 165
+#define RGB_BASE_COLOR 128, 255, 111
 #define HSV_cORANGE 10, 255, 255
 
 #define LAYER_LED 11
