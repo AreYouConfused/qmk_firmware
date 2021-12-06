@@ -97,7 +97,58 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     return state;
 }
 
+// Backlight timeout feature
+#define BACKLIGHT_TIMEOUT 5    // in minutes
+static uint16_t idle_timer = 0;
+static uint8_t halfmin_counter = 0;
+static uint8_t old_backlight_level = -1; 
+static uint8_t old_rgb_value = -1; 
+static bool led_on = true;
+static bool rgb_on = true;
+
+void matrix_scan_user(void) {
+  // idle_timer needs to be set one time
+    if (idle_timer == 0) idle_timer = timer_read();
+
+    #ifdef BACKLIGHT_ENABLE
+        if ( (led_on && timer_elapsed(idle_timer) > 30000) || (rgb_on && timer_elapsed(idle_timer) > 30000)) {
+            halfmin_counter++;
+            idle_timer = timer_read();
+        }
+
+        if ( (led_on && halfmin_counter >= BACKLIGHT_TIMEOUT * 2) || (rgb_on && halfmin_counter >= BACKLIGHT_TIMEOUT * 2)) {
+            old_backlight_level = get_backlight_level();
+			//old_rgb_hsv[0] = rgblight_get_hue(); 
+			//old_rgb_hsv[1] = rgblight_get_sat();
+			//old_rgb_hsv[2] = rgblight_get_val();
+            backlight_set(0);
+			rgblight_disable_noeeprom();
+            led_on = false; 
+			rgb_on = false;
+            halfmin_counter = 0;
+        }
+    #endif
+};
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+	if (record->event.pressed) {
+        #ifdef BACKLIGHT_ENABLE
+            if (led_on == false || old_backlight_level == -1 || rgb_on == false || old_rgb_value == -1) {
+                if (old_backlight_level == -1) old_backlight_level = get_backlight_level();
+	    	if (old_rgb_value == -1) old_rgb_value = 1;
+	     	old_rgb_value = 1;
+		    rgblight_enable_noeeprom();
+            backlight_set(old_backlight_level); 
+				
+           led_on = true;
+		   rgb_on = true;
+				
+				
+            }
+        #endif
+        idle_timer = timer_read();
+        halfmin_counter = 0;
+    }
     switch (keycode) {
         case pHSV:
             if (record->event.pressed){
