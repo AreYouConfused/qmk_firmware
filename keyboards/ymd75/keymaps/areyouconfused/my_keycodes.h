@@ -4,7 +4,7 @@
 
 enum layers {
 	_QWERTY,
-    _NUM,
+        _NUM,
 	_FN,
 	_SMACRO,
 	_TOGG
@@ -12,4 +12,5 @@ enum layers {
 
 enum custom_keycodes{
     pHSV = SAFE_RANGE,
+    Mock,
 };
