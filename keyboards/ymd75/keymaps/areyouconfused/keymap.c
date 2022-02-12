@@ -61,7 +61,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         RESET,    RGB_TOG,  pHSV,     KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_VOLD,  KC_VOLU,  KC_TRNS,  KC_TRNS,  KC_TRNS,
         KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,
         KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            TG(_TOGG),
-        KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,       KC_TRNS,                 KC_TRNS,
+        KC_TRNS,  KC_TRNS,  KC_TRNS,  die,      KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,       KC_TRNS,                 KC_TRNS,
         KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  Mock,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,                      KC_TRNS,  KC_TRNS,
         KC_TRNS,  KC_TRNS,  KC_TRNS,                      KC_TRNS,                                KC_TRNS,  TG(_TOGG),  TG(_TOGG),            KC_TRNS,  KC_TRNS,  KC_TRNS
     ),
@@ -74,8 +74,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #define LAYER_LED_COUNT 2
 
 bool is_sponge_active = false;
+bool is_dying_active = false;
+bool last_die = false;
 
-enum RGB_LAYERS { FN1, FN2, FN3, NUM, CAPS, MOCK, BLNK, RGB_NO, RGB_YES };
+enum RGB_LAYERS { FN1, FN2, FN3, NUM, CAPS, MOCK, DIE, BLNK, RGB_NO, RGB_YES };
 
 const rgblight_segment_t PROGMEM my_capslock_layer[] = RGBLIGHT_LAYER_SEGMENTS(
     {0, 1, HSV_GREEN},
@@ -85,6 +87,11 @@ const rgblight_segment_t PROGMEM my_capslock_layer[] = RGBLIGHT_LAYER_SEGMENTS(
 const rgblight_segment_t PROGMEM mock_rgb[] = RGBLIGHT_LAYER_SEGMENTS(
     {6, 3, HSV_RED}
 );
+
+const rgblight_segment_t PROGMEM die_rgb[] = RGBLIGHT_LAYER_SEGMENTS(
+    {6, 3, HSV_PURPLE}
+);
+
 // fn layer's rgb
 const rgblight_segment_t PROGMEM fn1_layer[] = RGBLIGHT_LAYER_SEGMENTS(
     {LAYER_LED, LAYER_LED_COUNT, HSV_RED}
@@ -120,6 +127,7 @@ const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
     num_layer,
     my_capslock_layer,
     mock_rgb,
+    die_rgb,
     blank,
     rgb_no,
     rgb_yes
@@ -238,11 +246,25 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                     register_code(KC_LSHIFT);
                 }
             }
+            if (is_dying_active && record->event.pressed) {
+                if (last_die) {
+                    register_code(KC_LSHIFT);
+                }
+                last_die = !last_die;
+            }
+            return true;
+    case KC_ESC:
+            is_dying_active = false;
+            is_sponge_active = false;
             return true;
     case Mock:
-          is_sponge_active = !is_sponge_active;
-          rgblight_set_layer_state(MOCK, is_sponge_active);
-          return true;
+            is_sponge_active = !is_sponge_active;
+            is_dying_active = false;
+            return true;
+    case die: 
+            is_dying_active = !is_dying_active;
+            is_sponge_active = false;
+            return true;
     default:
         return true;
     }
@@ -252,10 +274,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 void post_process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case KC_A ... KC_Z: {
-            if (is_sponge_active && record->event.pressed) {
+            if ((is_sponge_active || (is_dying_active && !last_die)) && record->event.pressed) {
                 unregister_code(KC_LSHIFT);
             }
         }
     }
+    rgblight_set_layer_state(MOCK, is_sponge_active);
+    rgblight_set_layer_state(DIE, is_dying_active);
 
 }
+

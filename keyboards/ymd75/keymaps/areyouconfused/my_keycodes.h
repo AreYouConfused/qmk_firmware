@@ -13,4 +13,5 @@ enum layers {
 enum custom_keycodes{
     pHSV = SAFE_RANGE,
     Mock,
+    die,
 };
