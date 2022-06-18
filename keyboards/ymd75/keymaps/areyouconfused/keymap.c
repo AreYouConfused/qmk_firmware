@@ -49,9 +49,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [_SMACRO] = LAYOUT(
-        HYPR(KC_ESC),   HYPR(KC_F1),    HYPR(KC_F2),    HYPR(KC_F3),    HYPR(KC_F4),    HYPR(KC_F5),    HYPR(KC_F6),    HYPR(KC_F7),    HYPR(KC_F8),    HYPR(KC_F9),    HYPR(KC_F10),   HYPR(KC_F11),   HYPR(KC_F12),   HYPR(KC_HOME),  HYPR(KC_END),  HYPR(KC_DEL),
-        HYPR(KC_GRV),   HYPR(KC_1),     HYPR(KC_2),     HYPR(KC_3),     HYPR(KC_4),     HYPR(KC_5),     HYPR(KC_6),     HYPR(KC_7),     HYPR(KC_8),     HYPR(KC_9),     HYPR(KC_0),     HYPR(KC_MINS),  HYPR(KC_EQL),      HYPR(KC_BSPC),        HYPR(KC_PSCR),
-        HYPR(KC_TAB),   HYPR(KC_Q),     HYPR(KC_W),     HYPR(KC_E),     HYPR(KC_R),     HYPR(KC_T),     HYPR(KC_Y),     HYPR(KC_U),     HYPR(KC_I),     HYPR(KC_O),     HYPR(KC_P),     HYPR(KC_LBRC),  HYPR(KC_RBRC),    HYPR(KC_BSLS),       KC_TRNS,
+        HYPR(KC_ESC),   HYPR(KC_F1),    HYPR(KC_F2),    HYPR(KC_F3),    HYPR(KC_F4),    HYPR(KC_F5),    HYPR(KC_F6),    HYPR(KC_F7),    HYPR(KC_F8),    HYPR(KC_F9),    HYPR(KC_F10),   HYPR(KC_F11),   HYPR(KC_F12),   HYPR(KC_PSCR),  HYPR(KC_SCROLLLOCK),  HYPR(KC_PAUSE),
+        HYPR(KC_GRV),   HYPR(KC_1),     HYPR(KC_2),     HYPR(KC_3),     HYPR(KC_4),     HYPR(KC_5),     HYPR(KC_6),     HYPR(KC_7),     HYPR(KC_8),     HYPR(KC_9),     HYPR(KC_0),     HYPR(KC_MINS),  HYPR(KC_EQL),      HYPR(KC_BSPC),        KC_TRNS,
+        HYPR(KC_TAB),   HYPR(KC_Q),     HYPR(KC_W),     HYPR(KC_E),     HYPR(KC_R),     HYPR(KC_T),     HYPR(KC_Y),     HYPR(KC_U),     HYPR(KC_I),     HYPR(KC_O),     HYPR(KC_P),     HYPR(KC_LBRC),  HYPR(KC_RBRC),    HYPR(KC_BSLS),       HYPR(KC_HOME),
         HYPR(KC_CAPS),  HYPR(KC_A),     HYPR(KC_S),     HYPR(KC_D),     HYPR(KC_F),     HYPR(KC_G),     HYPR(KC_H),     HYPR(KC_J),     HYPR(KC_K),     HYPR(KC_L),     HYPR(KC_SCLN),   HYPR(KC_QUOT),        HYPR(KC_ENT),             HYPR(KC_PGUP),
         HYPR(KC_LSFT),  HYPR(KC_Z),     HYPR(KC_X),     HYPR(KC_C),     HYPR(KC_V),     HYPR(KC_B),     HYPR(KC_N),     HYPR(KC_M),     HYPR(KC_COMM),  HYPR(KC_DOT),   HYPR(KC_SLSH),    HYPR(KC_RSFT),              HYPR(KC_UP),    HYPR(KC_PGDN),
         HYPR(KC_LCTL),  HYPR(KC_LGUI),  HYPR(KC_LALT),                  HYPR(KC_SPC),                                   HYPR(KC_RALT),  TG(_SMACRO),    TG(_SMACRO),              HYPR(KC_LEFT),   HYPR(KC_DOWN),   HYPR(KC_RGHT)
@@ -67,7 +67,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 };
 
-#define RGB_BASE_COLOR 0, 255, 200
+#define RGB_BASE_COLOR 0, 255, 160
 #define HSV_cORANGE 10, 255, 255
 
 #define LAYER_LED 11
