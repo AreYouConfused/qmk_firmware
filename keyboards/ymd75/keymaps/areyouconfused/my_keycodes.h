@@ -4,7 +4,7 @@
 
 enum layers {
 	_QWERTY,
-        _NUM,
+        _CAPS,
 	_FN,
 	_SMACRO,
 	_TOGG
