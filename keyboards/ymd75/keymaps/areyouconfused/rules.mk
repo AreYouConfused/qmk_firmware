@@ -1,3 +1,0 @@
-LTO_ENABLE = yes 
-
-BOOTMAGIC_ENABLE = lite

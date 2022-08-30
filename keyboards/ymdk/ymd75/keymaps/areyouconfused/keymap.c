@@ -31,12 +31,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [_CAPS] = LAYOUT(
-        KC_TRNS,             KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
-        KC_TRNS,             KC_MUTE,  KC_VOLD,  KC_VOLU,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_DEL,             KC_TRNS,
-        KC_TRNS,             KC_MPRV,  KC_MNXT,  KC_MPLY,  KC_TRNS,  KC_TRNS,  KC_HOME,  KC_PGDN,  KC_PGUP,  KC_END,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,
-        KC_TRNS,             KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RIGHT, KC_TRNS,  KC_TRNS,  KC_TRNS,                      KC_TRNS,
-        KC_TRNS,             KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,                      KC_TRNS,  KC_TRNS,
-        KC_TRNS,             KC_TRNS,  KC_TRNS,                      KC_TRNS,                      KC_TRNS,  KC_TRNS,  KC_TRNS,                      KC_TRNS,  KC_TRNS,  KC_TRNS
+        MEH(KC_ESC),            MEH(KC_F1),    MEH(KC_F2),    MEH(KC_F3),    MEH(KC_F4),    MEH(KC_F5),    MEH(KC_F6),    MEH(KC_F7),    MEH(KC_F8),    MEH(KC_F9),    MEH(KC_F10),     MEH(KC_F11),       MEH(KC_F12),    MEH(KC_PSCR),  MEH(KC_SCROLLLOCK),  MEH(KC_PAUSE),
+        MEH(KC_GRV),            KC_MUTE,       KC_VOLD,       KC_VOLU,     MEH(KC_4),     MEH(KC_5),     MEH(KC_6),     MEH(KC_7),     MEH(KC_8),     MEH(KC_9),     MEH(KC_0),       MEH(KC_MINS),      MEH(KC_EQL),    MEH(KC_BSPC),           MEH(KC_HOME),
+        MEH(KC_TAB),            KC_MPRV,       KC_MNXT,       KC_MPLY,     MEH(KC_R),     MEH(KC_T),     MEH(KC_Y),     MEH(KC_U),     MEH(KC_I),     MEH(KC_O),     MEH(KC_P),       MEH(KC_LBRC),      MEH(KC_RBRC),   MEH(KC_BSLS),           MEH(KC_END),
+        KC_TRNS,                MEH(KC_A),     MEH(KC_S),     MEH(KC_D),     MEH(KC_F),     MEH(KC_G),     MEH(KC_H),     MEH(KC_J),     MEH(KC_K),     MEH(KC_L),     MEH(KC_SCLN ),   MEH(KC_QUOT),      MEH(KC_ENT),                       MEH(KC_PGUP),
+        KC_TRNS,           MEH(KC_Z),     MEH(KC_X),     MEH(KC_C),     MEH(KC_V),     MEH(KC_B),     MEH(KC_N),     MEH(KC_M),     MEH(KC_COMM),  MEH(KC_DOT),   MEH(KC_SLSH),    MEH(KC_RSFT),                 MEH(KC_UP),             MEH(KC_PGDN),
+        KC_TRNS,           KC_TRNS,  KC_TRNS,                  MEH(KC_SPC),                           KC_TRNS,  KC_TRNS,  KC_TRNS,                                                              MEH(KC_LEFT),   MEH(KC_DOWN),           MEH(KC_RGHT)
     ),
     
     [_FN] = LAYOUT(
