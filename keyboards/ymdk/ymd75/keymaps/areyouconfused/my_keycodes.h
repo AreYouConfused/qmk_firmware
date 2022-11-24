@@ -3,11 +3,10 @@
 #include QMK_KEYBOARD_H
 
 enum layers {
-	_QWERTY,
-        _CAPS,
-	_FN,
-	_SMACRO,
-	_TOGG
+    _QWERTY,
+    _CAPS,
+    _FN,
+    _TOGG
 };
 
 enum custom_keycodes{

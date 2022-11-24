@@ -27,16 +27,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB,              KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,       KC_LBRC,      KC_RBRC,   KC_BSLS,           KC_END,
         LT(_CAPS, KC_CAPS),  KC_A,     KC_S,     KC_D,     KC_F,     KC_G,     KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN ,   KC_QUOT,      KC_ENT,                       KC_PGUP,
         KC_LSFT,             KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,    KC_RSFT,                 KC_UP,             KC_PGDN,
-        KC_LCTL,             KC_LGUI,  KC_LALT,                  KC_SPC,                           KC_RALT,  MO(_FN),  LT(_SMACRO, KC_RCTL),     KC_LEFT,   KC_DOWN,           KC_RGHT
+        KC_LCTL,             KC_LGUI,  KC_LALT,                  KC_SPC,                           KC_RALT,  MO(_FN),  KC_RCTL,     KC_LEFT,   KC_DOWN,           KC_RGHT
     ),
 
     [_CAPS] = LAYOUT(
-        MEH(KC_ESC),            MEH(KC_F1),    MEH(KC_F2),    MEH(KC_F3),    MEH(KC_F4),    MEH(KC_F5),    MEH(KC_F6),    MEH(KC_F7),    MEH(KC_F8),    MEH(KC_F9),    MEH(KC_F10),     MEH(KC_F11),       MEH(KC_F12),    MEH(KC_PSCR),  MEH(KC_SCROLLLOCK),  MEH(KC_PAUSE),
-        MEH(KC_GRV),            KC_MUTE,       KC_VOLD,       KC_VOLU,     MEH(KC_4),     MEH(KC_5),     MEH(KC_6),     MEH(KC_7),     MEH(KC_8),     MEH(KC_9),     MEH(KC_0),       MEH(KC_MINS),      MEH(KC_EQL),    KC_DEL,           MEH(KC_HOME),
-        MEH(KC_TAB),            KC_MPRV,       KC_MNXT,       KC_MPLY,     MEH(KC_R),     MEH(KC_T),     MEH(KC_Y),     MEH(KC_U),     MEH(KC_I),     MEH(KC_O),     MEH(KC_P),       MEH(KC_LBRC),      MEH(KC_RBRC),   MEH(KC_BSLS),           MEH(KC_END),
-        KC_TRNS,                MEH(KC_A),     MEH(KC_S),     MEH(KC_D),     MEH(KC_F),     MEH(KC_G),     MEH(KC_H),     MEH(KC_J),     MEH(KC_K),     MEH(KC_L),     MEH(KC_SCLN ),   MEH(KC_QUOT),      MEH(KC_ENT),                       MEH(KC_PGUP),
-        KC_TRNS,           MEH(KC_Z),     MEH(KC_X),     MEH(KC_C),     MEH(KC_V),     MEH(KC_B),     MEH(KC_N),     MEH(KC_M),     MEH(KC_COMM),  MEH(KC_DOT),   MEH(KC_SLSH),    MEH(KC_RSFT),                 MEH(KC_UP),             MEH(KC_PGDN),
-        KC_TRNS,           KC_TRNS,  KC_TRNS,                  MEH(KC_SPC),                           KC_TRNS,  KC_TRNS,  KC_TRNS,                                                              MEH(KC_LEFT),   MEH(KC_DOWN),           MEH(KC_RGHT)
+        HYPR(KC_ESC),            HYPR(KC_F1),    HYPR(KC_F2),    HYPR(KC_F3),    HYPR(KC_F4),    HYPR(KC_F5),    HYPR(KC_F6),    HYPR(KC_F7),    HYPR(KC_F8),    HYPR(KC_F9),    HYPR(KC_F10),     HYPR(KC_F11),       HYPR(KC_F12),    HYPR(KC_PSCR),  HYPR(KC_SCROLLLOCK),  HYPR(KC_PAUSE),
+        HYPR(KC_GRV),            KC_MUTE,       KC_VOLD,       KC_VOLU,     HYPR(KC_4),     HYPR(KC_5),     HYPR(KC_6),     HYPR(KC_7),     HYPR(KC_8),     HYPR(KC_9),     HYPR(KC_0),       HYPR(KC_MINS),      HYPR(KC_EQL),    KC_DEL,           HYPR(KC_HOME),
+        HYPR(KC_TAB),            KC_MPRV,       KC_MNXT,       KC_MPLY,     HYPR(KC_R),     HYPR(KC_T),     HYPR(KC_Y),     HYPR(KC_U),     HYPR(KC_I),     HYPR(KC_O),     HYPR(KC_P),       HYPR(KC_LBRC),      HYPR(KC_RBRC),   HYPR(KC_BSLS),           HYPR(KC_END),
+        KC_TRNS,                HYPR(KC_A),     HYPR(KC_S),     HYPR(KC_D),     HYPR(KC_F),     HYPR(KC_G),     HYPR(KC_H),     HYPR(KC_J),     HYPR(KC_K),     HYPR(KC_L),     HYPR(KC_SCLN ),   HYPR(KC_QUOT),      HYPR(KC_ENT),                       HYPR(KC_PGUP),
+        KC_TRNS,           HYPR(KC_Z),     HYPR(KC_X),     HYPR(KC_C),     HYPR(KC_V),     HYPR(KC_B),     HYPR(KC_N),     HYPR(KC_M),     HYPR(KC_COMM),  HYPR(KC_DOT),   HYPR(KC_SLSH),    HYPR(KC_RSFT),                 HYPR(KC_UP),             HYPR(KC_PGDN),
+        KC_TRNS,           KC_TRNS,  KC_TRNS,                  HYPR(KC_SPC),                           KC_TRNS,  KC_TRNS,  KC_TRNS,                                                              HYPR(KC_LEFT),   HYPR(KC_DOWN),           HYPR(KC_RGHT)
     ),
     
     [_FN] = LAYOUT(
@@ -46,15 +46,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_MPRV,  KC_MNXT,       KC_TRNS,                 KC_TRNS,
         KC_TRNS,  RGB_HUI,  RGB_SAI,  RGB_VAI,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_VOLD,  KC_VOLU,  KC_MPLY,                      KC_TRNS,  KC_TRNS,
         KC_TRNS,  KC_TRNS,  KC_TRNS,                      KC_TRNS,                                KC_TRNS,  KC_TRNS,  OSL(_TOGG),            KC_TRNS,  KC_TRNS,  KC_TRNS
-    ),
-
-    [_SMACRO] = LAYOUT(
-        HYPR(KC_ESC),   HYPR(KC_F1),    HYPR(KC_F2),    HYPR(KC_F3),    HYPR(KC_F4),    HYPR(KC_F5),    HYPR(KC_F6),    HYPR(KC_F7),    HYPR(KC_F8),    HYPR(KC_F9),    HYPR(KC_F10),   HYPR(KC_F11),   HYPR(KC_F12),   HYPR(KC_PSCR),  HYPR(KC_SCROLLLOCK),  HYPR(KC_PAUSE),
-        HYPR(KC_GRV),   HYPR(KC_1),     HYPR(KC_2),     HYPR(KC_3),     HYPR(KC_4),     HYPR(KC_5),     HYPR(KC_6),     HYPR(KC_7),     HYPR(KC_8),     HYPR(KC_9),     HYPR(KC_0),     HYPR(KC_MINS),  HYPR(KC_EQL),      HYPR(KC_BSPC),        KC_TRNS,
-        HYPR(KC_TAB),   HYPR(KC_Q),     HYPR(KC_W),     HYPR(KC_E),     HYPR(KC_R),     HYPR(KC_T),     HYPR(KC_Y),     HYPR(KC_U),     HYPR(KC_I),     HYPR(KC_O),     HYPR(KC_P),     HYPR(KC_LBRC),  HYPR(KC_RBRC),    HYPR(KC_BSLS),       HYPR(KC_HOME),
-        HYPR(KC_CAPS),  HYPR(KC_A),     HYPR(KC_S),     HYPR(KC_D),     HYPR(KC_F),     HYPR(KC_G),     HYPR(KC_H),     HYPR(KC_J),     HYPR(KC_K),     HYPR(KC_L),     HYPR(KC_SCLN),   HYPR(KC_QUOT),        HYPR(KC_ENT),             HYPR(KC_PGUP),
-        HYPR(KC_LSFT),  HYPR(KC_Z),     HYPR(KC_X),     HYPR(KC_C),     HYPR(KC_V),     HYPR(KC_B),     HYPR(KC_N),     HYPR(KC_M),     HYPR(KC_COMM),  HYPR(KC_DOT),   HYPR(KC_SLSH),    HYPR(KC_RSFT),              HYPR(KC_UP),    HYPR(KC_PGDN),
-        HYPR(KC_LCTL),  HYPR(KC_LGUI),  HYPR(KC_LALT),                  HYPR(KC_SPC),                                   HYPR(KC_RALT),  TG(_SMACRO),    TG(_SMACRO),              HYPR(KC_LEFT),   HYPR(KC_DOWN),   HYPR(KC_RGHT)
     ),
 
     [_TOGG] = LAYOUT(
@@ -154,7 +145,7 @@ bool led_update_user(led_t led_state) {
 
 layer_state_t layer_state_set_user(layer_state_t state) {
     //rgblight_set_layer_state(FN1, layer_state_cmp(state, _FN));
-    rgblight_set_layer_state(FN2, layer_state_cmp(state, _SMACRO));
+    //rgblight_set_layer_state(FN2, layer_state_cmp(state, _SMACRO));
     rgblight_set_layer_state(FN3, layer_state_cmp(state, _TOGG));
     //rgblight_set_layer_state(NUM, layer_state_cmp(state, _CAPS));
     
