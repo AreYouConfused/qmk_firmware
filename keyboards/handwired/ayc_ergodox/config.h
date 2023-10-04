@@ -12,7 +12,7 @@
 #define BOOTMAGIC_LITE_ROW_RIGHT 5
 #define BOOTMAGIC_LITE_COLUMN_RIGHT 7
 
-#define IGNORE_MOD_TAP_INTERRUPT
+#define DEBOUNCE 10
 
 #define LAYOUT_ergodox(                                                                         \
                                                                                                 \
