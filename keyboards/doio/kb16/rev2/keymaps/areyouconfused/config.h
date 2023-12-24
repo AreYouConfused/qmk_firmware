@@ -1,0 +1,6 @@
+#pragma once
+
+#define OLED_BRIGHTNESS 80
+#define OLED_TIMEOUT 0
+
+//#define RGB_DISABLE_WHEN_USB_SUSPENDED 1
