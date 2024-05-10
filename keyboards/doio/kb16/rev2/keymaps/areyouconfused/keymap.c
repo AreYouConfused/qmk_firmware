@@ -107,7 +107,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 */
     /*  Row:    0        1        2        3        4       */
     [_FN] = LAYOUT(
-                  KC_NO, _______, _______, _______, _______,
+                _______, _______, _______, _______, _______,
                 _______, _______, _______, _______, _______,
                 _______, _______, _______, _______, _______,
                 _______, _______, _______, _______
@@ -126,7 +126,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 */
     /*  Row:    0        1        2        3        4       */
     [_FN1] = LAYOUT(
-                _______,   KC_NO, _______, _______, _______,
+                _______, _______, _______, _______, _______,
                 _______, _______, _______, _______, _______,
                 _______, _______, _______, _______, _______,
                 _______, _______, _______, _______
@@ -161,7 +161,7 @@ static bool mic = false;
 #endif
 
 #ifdef ENCODER_MAP_ENABLE
-const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
+ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
     [_BASE] = { ENCODER_CCW_CW(KC_Q, KC_R), ENCODER_CCW_CW(TO(_FN2), TO(_FN)), ENCODER_CCW_CW(KC_T, KC_V) },
     [_FN]   = { ENCODER_CCW_CW(KC_TRNS, KC_TRNS), ENCODER_CCW_CW(TO(_BASE), TO(_FN1)), ENCODER_CCW_CW(KC_TRNS, KC_TRNS) },
     [_FN1]  = { ENCODER_CCW_CW(KC_TRNS, KC_TRNS), ENCODER_CCW_CW(TO(_FN), TO(_FN2)), ENCODER_CCW_CW(KC_TRNS, KC_TRNS) },
@@ -202,10 +202,14 @@ bool rgb_matrix_indicators_kb(void) {
     if (!rgb_matrix_indicators_user()) {
         return false;
     }
-    if (!mic){
-        rgb_matrix_set_color(15, RGB_GREEN);
+    if (get_highest_layer(layer_state) == 0){
+        if (!mic){
+            rgb_matrix_set_color(15, RGB_GREEN);
+        } else {
+            rgb_matrix_set_color(15, RGB_RED);
+        }
     } else {
-        rgb_matrix_set_color(15, RGB_RED);
+        //rgb_matrix_set_color(15, RGB_PURPLE);
     }
     return true;
 }
