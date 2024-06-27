@@ -20,7 +20,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "my_keycodes.h"
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    
+
     [_QWERTY] = LAYOUT(
         KC_ESC,              KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,     KC_F11,       KC_F12,    KC_PSCR,  KC_SCROLLLOCK,  KC_PAUSE,
         KC_GRV,              KC_1,     KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,       KC_MINS,      KC_EQL,    KC_BSPC,           KC_HOME,
@@ -38,10 +38,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TRNS,           HYPR(KC_Z),     HYPR(KC_X),     HYPR(KC_C),     HYPR(KC_V),     HYPR(KC_B),     HYPR(KC_N),     HYPR(KC_M),     HYPR(KC_COMM),  HYPR(KC_DOT),   HYPR(KC_SLSH),    HYPR(KC_RSFT),                 HYPR(KC_UP),             HYPR(KC_PGDN),
         KC_TRNS,           KC_TRNS,  KC_TRNS,                  HYPR(KC_SPC),                           KC_TRNS,  KC_TRNS,  KC_TRNS,                                                              HYPR(KC_LEFT),   HYPR(KC_DOWN),           HYPR(KC_RGHT)
     ),
-    
+
     [_FN] = LAYOUT(
         KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_BRIGHTNESS_DOWN,  KC_BRIGHTNESS_UP,  KC_TRNS,  KC_TRNS,  KC_TRNS,
-        KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,
+
+        KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_DEL,             KC_TRNS,
         KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_END,
         KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_MPRV,  KC_MNXT,       KC_TRNS,                 KC_TRNS,
         KC_TRNS,  RGB_HUI,  RGB_SAI,  RGB_VAI,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_VOLD,  KC_VOLU,  KC_MPLY,                      KC_TRNS,  KC_TRNS,
@@ -58,7 +59,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 };
 
-#define RGB_BASE_COLOR 0, 255, 160
+#define RGB_BASE_COLOR 200, 150, 100
 #define HSV_cORANGE 10, 255, 255
 
 #define LAYER_LED 11
@@ -80,7 +81,7 @@ const rgblight_segment_t PROGMEM mock_rgb[] = RGBLIGHT_LAYER_SEGMENTS(
 );
 
 const rgblight_segment_t PROGMEM die_rgb[] = RGBLIGHT_LAYER_SEGMENTS(
-    {6, 3, HSV_PURPLE}
+    {6, 3, HSV_RED}
 );
 
 // fn layer's rgb
@@ -104,7 +105,7 @@ const rgblight_segment_t PROGMEM blank[] = RGBLIGHT_LAYER_SEGMENTS(
 );
 
 const rgblight_segment_t PROGMEM rgb_no[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 18, HSV_RED}
+    {0, 18, HSV_PURPLE}
 );
 
 const rgblight_segment_t PROGMEM rgb_yes[] = RGBLIGHT_LAYER_SEGMENTS(
@@ -148,7 +149,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     //rgblight_set_layer_state(FN2, layer_state_cmp(state, _SMACRO));
     rgblight_set_layer_state(FN3, layer_state_cmp(state, _TOGG));
     //rgblight_set_layer_state(NUM, layer_state_cmp(state, _CAPS));
-    
+
     return state;
 }
 
@@ -156,8 +157,8 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 #define BACKLIGHT_TIMEOUT 5    // in minutes
 static uint16_t idle_timer = 0;
 static uint8_t halfmin_counter = 0;
-static uint8_t old_backlight_level = -1; 
-static uint8_t old_rgb_value = -1; 
+static uint8_t old_backlight_level = -1;
+static uint8_t old_rgb_value = -1;
 static bool led_on = true;
 static bool rgb_on = true;
 
@@ -173,12 +174,12 @@ void matrix_scan_user(void) {
 
         if ( (led_on && halfmin_counter >= BACKLIGHT_TIMEOUT * 2) || (rgb_on && halfmin_counter >= BACKLIGHT_TIMEOUT * 2)) {
             old_backlight_level = get_backlight_level();
-			//old_rgb_hsv[0] = rgblight_get_hue(); 
+			//old_rgb_hsv[0] = rgblight_get_hue();
 			//old_rgb_hsv[1] = rgblight_get_sat();
 			//old_rgb_hsv[2] = rgblight_get_val();
             backlight_set(0);
 			rgblight_disable_noeeprom();
-            led_on = false; 
+            led_on = false;
 			rgb_on = false;
             halfmin_counter = 0;
         }
@@ -200,12 +201,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 	    	if (old_rgb_value == -1) old_rgb_value = 1;
 	     	old_rgb_value = 1;
 		    rgblight_enable_noeeprom();
-            backlight_set(old_backlight_level); 
-				
+            backlight_set(old_backlight_level);
+
            led_on = true;
 		   rgb_on = true;
-				
-				
+
+
             }
         #endif
         idle_timer = timer_read();
@@ -231,7 +232,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 SEND_STRING(" ");
             }
         return true;
-    case KC_A ... KC_Z: 
+    case KC_A ... KC_Z:
             if (is_sponge_active && record->event.pressed) {
                 if (random_bool()) {
                     register_code(KC_LSHIFT);
@@ -252,7 +253,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             is_sponge_active = !is_sponge_active;
             is_dying_active = false;
             return true;
-    case die: 
+    case die:
             is_dying_active = !is_dying_active;
             is_sponge_active = false;
             return true;
